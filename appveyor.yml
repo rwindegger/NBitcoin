@@ -1,0 +1,27 @@
+version: 4.7.{build}
+branches:
+  only:
+  - master
+image: Visual Studio 2017
+configuration: Release
+clone_depth: 1
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
+build_script:
+- cmd: dotnet build -p:Version=%APPVEYOR_BUILD_VERSION% --configuration Release
+test_script:
+- cmd: dotnet test --configuration Release --filter FullyQualifiedName!=NBitcoin.Tests.ProtocolTests.CanConnectToRandomNode
+artifacts:
+- path: '**/*.nupkg'
+deploy:
+- provider: NuGet
+  api_key:
+    secure: +6Qoa+I46TvX3B13yRR2IfcLwr00W6z1X3rQW1pZjhQ7OsewIg8sH3yAyvVgqXRX
+  skip_symbols: true
+  artifact: /.*.nupkg/
