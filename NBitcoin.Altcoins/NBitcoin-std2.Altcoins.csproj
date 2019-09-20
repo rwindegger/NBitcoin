@@ -4,34 +4,32 @@
 		<Copyright>Copyright © Metaco SA 2017</Copyright>
 		<Description>The C# Bitcoin Library</Description>
 		<PackageIconUrl>https://aois.blob.core.windows.net/public/Bitcoin.png</PackageIconUrl>
-		<PackageId>NBitcoin.Altcoins</PackageId>
+		<PackageId>NBitcoin-std2.Altcoins</PackageId>
 		<PackageTags>bitcoin,altcoins,bcash,bgold,bitcore,dash,dogecoin,dystem,feathercoin,groestlcoin,litecoin,monacoin,polis,ufo,viacoin,zclassic,liquid</PackageTags>
 		<PackageProjectUrl>https://github.com/MetacoSA/NBitcoin</PackageProjectUrl>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<RepositoryType>git</RepositoryType>
 	</PropertyGroup>
 	<PropertyGroup>
 		<Version Condition=" '$(Version)' == '' ">1.0.3</Version>
-		<TargetFrameworks>net452;netstandard1.3;netstandard2.0</TargetFrameworks>
-		<TargetFrameworks Condition="'$(BuildingInsideVisualStudio)' == 'true'">netstandard2.0</TargetFrameworks>
-    <TargetFrameworks Condition="'$(TargetFrameworkOverride)' != ''">$(TargetFrameworkOverride)</TargetFrameworks>
+		<TargetFramework>netstandard2.0</TargetFramework>
 		<NoWarn>1591;1573;1572;1584;1570;3021</NoWarn>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
-	<ItemGroup>
-		<ProjectReference Include="..\NBitcoin\NBitcoin.csproj" />
+	<ItemGroup Condition=" '$(Configuration)' == 'Release' ">
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-63127-02" PrivateAssets="All" />
 	</ItemGroup>
-  <ItemGroup Condition=" '$(Configuration)' == 'Release' ">
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-63127-02" PrivateAssets="All"/>
-  </ItemGroup>
 	<ItemGroup>
-	  <Compile Remove="HashX11\NeoScrypt.cs" />
+		<Compile Remove="HashX11\NeoScrypt.cs" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\NBitcoin\NBitcoin-std2.csproj" />
 	</ItemGroup>
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>portable</DebugType>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<DebugType>portable</DebugType>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 		<Optimize>true</Optimize>
-		<DocumentationFile>bin\Release\NBitcoin.Altcoins.XML</DocumentationFile>
+		<DocumentationFile>bin\Release\NBitcoin-std2.Altcoins.XML</DocumentationFile>
 	</PropertyGroup>
 </Project>
