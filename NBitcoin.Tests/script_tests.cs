@@ -394,17 +394,21 @@ namespace NBitcoin.Tests
 			var bitcoinPath = NodeBuilder.EnsureDownloaded(NodeDownloadData.Bitcoin.v0_17_0);
 
 			string libConsensusDll = null;
+			string libConsensusOutDll = null;
 			if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
 			{
 				libConsensusDll = "libbitcoinconsensus-0.dll";
+				libConsensusOutDll = "libbitcoinconsensus.dll";
 			}
 			else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
 			{
 				libConsensusDll = "libbitcoinconsensus.0.dylib";
+				libConsensusOutDll = "libbitcoinconsensus.dylib";
 			}
 			else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
 			{
 				libConsensusDll = "libbitcoinconsensus.so";
+				libConsensusOutDll = "libbitcoinconsensus.so";
 			}
 			else
 			{
@@ -416,11 +420,11 @@ namespace NBitcoin.Tests
 			libConsensusPath = Path.GetFullPath(libConsensusPath);
 			try
 			{
-				File.Copy(libConsensusPath, $"./{libConsensusDll}", overwrite: false);
+				File.Copy(libConsensusPath, $"./{libConsensusOutDll}", overwrite: true);
 			}
-			catch (IOException)
+			catch (IOException ioex)
 			{
-
+				Console.WriteLine(ioex);
 			}
 #endif
 		}
