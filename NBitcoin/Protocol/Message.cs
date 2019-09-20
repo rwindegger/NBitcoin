@@ -1,7 +1,6 @@
 ﻿using NBitcoin.Crypto;
 using NBitcoin.DataEncoders;
 using System;
-using System.Buffers;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -70,8 +69,8 @@ namespace NBitcoin.Protocol
 		#region IBitcoinSerializable Members
 
 		// We use this for big blocks, because the default array pool would allocate a new array. We do not need lot's of bucket such arrays are short lived.
-		readonly static Lazy<ArrayPool<byte>> BigArrayPool = new Lazy<ArrayPool<byte>>(() => ArrayPool<byte>.Create(0x02000000, 5), false);
-		ArrayPool<byte> GetArrayPool(int size) => size < 1_048_576 ? ArrayPool<byte>.Shared : BigArrayPool.Value;
+		//readonly static Lazy<ArrayPool<byte>> BigArrayPool = new Lazy<ArrayPool<byte>>(() => ArrayPool<byte>.Create(0x02000000, 5), false);
+		//ArrayPool<byte> GetArrayPool(int size) => size < 1_048_576 ? ArrayPool<byte>.Shared : BigArrayPool.Value;
 
 		public void ReadWrite(BitcoinStream stream)
 		{
@@ -115,8 +114,8 @@ namespace NBitcoin.Protocol
 					throw new FormatException("Message payload too big ( > 0x02000000 bytes)");
 				}
 
-				var arrayPool = GetArrayPool(length);
-				var payloadBytes = arrayPool.Rent(length);
+				//var arrayPool = GetArrayPool(length);
+				var payloadBytes = new byte[length]; // arrayPool.Rent(length);
 				try
 				{
 					uint expectedChecksum = 0;
@@ -145,7 +144,8 @@ namespace NBitcoin.Protocol
 				}
 				finally
 				{
-					arrayPool.Return(payloadBytes);
+					payloadBytes = null;
+					// arrayPool.Return(payloadBytes);
 				}
 			}
 		}

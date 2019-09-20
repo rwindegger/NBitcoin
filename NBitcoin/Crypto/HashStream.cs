@@ -125,7 +125,7 @@ namespace NBitcoin.Crypto
 #if NONATIVEHASH
 		byte[] _Buffer = new byte[32];
 #else
-		byte[] _Buffer = System.Buffers.ArrayPool<byte>.Shared.Rent(32 * 10);
+		byte[] _Buffer = new byte[32*10]; // System.Buffers.ArrayPool<byte>.Shared.Rent(32 * 10);
 #endif
 
 		int _Pos;
@@ -186,7 +186,7 @@ namespace NBitcoin.Crypto
 
 		protected override void Dispose(bool disposing)
 		{
-			System.Buffers.ArrayPool<byte>.Shared.Return(_Buffer);
+			_Buffer = null; // System.Buffers.ArrayPool<byte>.Shared.Return(_Buffer);
 			if (disposing)
 				sha.Dispose();
 			base.Dispose(disposing);
