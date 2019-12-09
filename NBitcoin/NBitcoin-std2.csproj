@@ -39,7 +39,10 @@
 	<ItemGroup Condition=" '$(Configuration)' == 'Release' ">
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-63127-02" PrivateAssets="All" />
 	</ItemGroup>
-
+	<ItemGroup>
+		<None Include="..\icon.png" Pack="true" PackagePath="\" />
+	</ItemGroup>
+	
 	<ItemGroup>
 		<None Update="BitcoinStream.Partial.tt">
 			<Generator>TextTemplatingFileGenerator</Generator>
