@@ -4,7 +4,7 @@
 		<Company>Metaco SA</Company>
 		<Copyright>Copyright © Metaco SA 2017</Copyright>
 		<Description>The C# Bitcoin Library</Description>
-		<PackageIconUrl>https://aois.blob.core.windows.net/public/Bitcoin.png</PackageIconUrl>
+		<PackageIcon>icon.png</PackageIcon>
 		<PackageTags>bitcoin</PackageTags>
 		<PackageProjectUrl>https://github.com/rwindegger/NBitcoin</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -12,8 +12,8 @@
 		<RepositoryType>git</RepositoryType>
 	</PropertyGroup>
 	<PropertyGroup>
-		<Version Condition=" '$(Version)' == '' ">4.2.7</Version>
-		<LangVersion>7.2</LangVersion>
+		<Version Condition=" '$(Version)' == '' ">5.0.7</Version>
+		<LangVersion>8.0</LangVersion>
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -30,11 +30,11 @@
 		<DocumentationFile>bin\Release\NBitcoin-std2.XML</DocumentationFile>
 	</PropertyGroup>
 	<PropertyGroup>
-		<DefineConstants>$(DefineConstants);NOCUSTOMSSLVALIDATION;NETSTANDARD</DefineConstants>
+		<DefineConstants>$(DefineConstants);NOCUSTOMSSLVALIDATION;NETSTANDARD;NO_ARRAY_FILL</DefineConstants>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.0" />
 	</ItemGroup>
 	<ItemGroup Condition=" '$(Configuration)' == 'Release' ">
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-63127-02" PrivateAssets="All" />

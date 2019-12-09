@@ -20,6 +20,8 @@ Currently supported altcoins are:
 * Koto
 * Bitcoinplus
 * Chaincoin
+* ZCoin
+* DogeCash
 
 ## How to use?
 

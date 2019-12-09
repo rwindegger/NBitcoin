@@ -113,6 +113,61 @@ namespace NBitcoin.Tests
 				},
 				UseSectionInConfigFile = true
 			};
+
+			public NodeDownloadData v0_18_1 = new NodeDownloadData()
+			{
+				Version = "0.18.1",
+				Linux = new NodeOSDownloadData()
+				{
+					Archive = "bitcoin-{0}-x86_64-linux-gnu.tar.gz",
+					DownloadLink = "https://bitcoincore.org/bin/bitcoin-core-{0}/bitcoin-{0}-x86_64-linux-gnu.tar.gz",
+					Executable = "bitcoin-{0}/bin/bitcoind",
+					Hash = "600d1db5e751fa85903e935a01a74f5cc57e1e7473c15fd3e17ed21e202cfe5a"
+				},
+				Mac = new NodeOSDownloadData()
+				{
+					Archive = "bitcoin-{0}-osx64.tar.gz",
+					DownloadLink = "https://bitcoincore.org/bin/bitcoin-core-{0}/bitcoin-{0}-osx64.tar.gz",
+					Executable = "bitcoin-{0}/bin/bitcoind",
+					Hash = "b7bbcee7a7540f711b171d6981f939ca8482005fde22689bc016596d80548bb1"
+				},
+				Windows = new NodeOSDownloadData()
+				{
+					Executable = "bitcoin-{0}/bin/bitcoind.exe",
+					DownloadLink = "https://bitcoincore.org/bin/bitcoin-core-{0}/bitcoin-{0}-win64.zip",
+					Archive = "bitcoin-{0}-win64.zip",
+					Hash = "b0f94ab43c068bac9c10a59cb3f1b595817256a00b84f0b724f8504b44e1314f"
+				},
+				UseSectionInConfigFile = true
+			};
+
+			public NodeDownloadData v0_19_0_1 = new NodeDownloadData()
+			{
+				Version = "0.19.0.1",
+				Linux = new NodeOSDownloadData()
+				{
+					Archive = "bitcoin-{0}-x86_64-linux-gnu.tar.gz",
+					DownloadLink = "https://bitcoincore.org/bin/bitcoin-core-{0}/bitcoin-{0}-x86_64-linux-gnu.tar.gz",
+					Executable = "bitcoin-{0}/bin/bitcoind",
+					Hash = "732cc96ae2e5e25603edf76b8c8af976fe518dd925f7e674710c6c8ee5189204"
+				},
+				Mac = new NodeOSDownloadData()
+				{
+					Archive = "bitcoin-{0}-osx64.tar.gz",
+					DownloadLink = "https://bitcoincore.org/bin/bitcoin-core-{0}/bitcoin-{0}-osx64.tar.gz",
+					Executable = "bitcoin-{0}/bin/bitcoind",
+					Hash = "a64e4174e400f3a389abd76f4d6b1853788730013ab1dedc0e64b0a0025a0923"
+				},
+				Windows = new NodeOSDownloadData()
+				{
+					Executable = "bitcoin-{0}/bin/bitcoind.exe",
+					DownloadLink = "https://bitcoincore.org/bin/bitcoin-core-{0}/bitcoin-{0}-win64.zip",
+					Archive = "bitcoin-{0}-win64.zip",
+					Hash = "7706593de727d893e4b1e750dc296ea682ccee79acdd08bbc81eaacf3b3173cf"
+				},
+				UseSectionInConfigFile = true
+			};
+
 		}
 
 		public class LitecoinNodeDownloadData
@@ -732,20 +787,20 @@ namespace NBitcoin.Tests
 				AdditionalRegtestConfig = "initialfreecoins=210000000000000"
 			};
 
-			public NodeDownloadData v0_17_0_1 = new NodeDownloadData()
+			public NodeDownloadData v0_18_1_1 = new NodeDownloadData()
 			{
-				Version = "0.17.0.1",
+				Version = "0.18.1.1",
 				Windows = new NodeOSDownloadData()
 				{
 					DownloadLink = "https://github.com/ElementsProject/elements/releases/download/elements-{0}/elements-{0}-win64.zip",
 					Archive = "elements-{0}-win64.zip",
-					Executable = "elements-0.17.0/bin/elementsd.exe",
-					Hash = "e1dd04716d23e214b697ee33f2a77c803ae7e93ed93f2db68462a8c278361a24"
+					Executable = "elements-0.18.1.1/bin/elementsd.exe",
+					Hash = "f6ca18e3f4fe4fb4aadb70b7b447466afb68eec11d9cd5e2cac613414a28a1a5"
 				},
 				RegtestFolderName = "elementsregtest",
 				Chain = "elementsregtest",
-				AdditionalRegtestConfig = "initialfreecoins=210000000000000\nvalidatepegin=0",
-				UseSectionInConfigFile = true
+				AdditionalRegtestConfig = "initialfreecoins=210000000000000\nvalidatepegin=0\n\ncon_dyna_deploy_start=99999999999999999",
+				UseSectionInConfigFile = true,
 			};
 
 		}
@@ -1001,6 +1056,35 @@ namespace NBitcoin.Tests
 			};
 		}
 
+		public class ZCoinNodeDownloadData
+		{
+			public NodeDownloadData v0_13_8_3 = new NodeDownloadData()
+			{
+				Version = "0.13.8.3",
+				Windows = new NodeOSDownloadData()
+				{
+					DownloadLink = "https://github.com/zcoinofficial/zcoin/releases/download/v{0}/zcoin-{0}-win64.zip",
+					Archive = "zcoin-{0}-win64.zip",
+					Executable = "zcoin-{0}/bin/zcoind.exe",
+					Hash = "f0cca1fca157c8549cdfdbd2587d2dfad9234a63df193f666d8a9d77df5a8eb3"
+				},
+				Linux = new NodeOSDownloadData()
+				{
+					DownloadLink = "https://github.com/zcoinofficial/zcoin/releases/download/v{0}/zcoin-{0}-x86_64-linux-gnu.tar.gz",
+					Archive = "zcoin-{0}-x86_64-linux-gnu.tar.gz",
+					Executable = "zcoin-{0}/bin/zcoind",
+					Hash = "364ea09583b46866a7d84b924355e41cf5d8f2f1a54f8abb6c3f10b63d1933f1"
+				},
+				Mac = new NodeOSDownloadData()
+				{
+					DownloadLink = "https://github.com/zcoinofficial/zcoin/releases/download/v{0}/zcoin-{0}-osx64.tar.gz",
+					Archive = "zcoin-{0}-osx64.tar.gz",
+					Executable = "zcoin-{0}/bin/zcoind",
+					Hash = "9d7ae6cdc6afdecfbf6425e4e652baeb7c6b440c90dc8e7ac1cb30a7f7e0574e"
+				}
+			};
+		}
+
 		/// <summary>
 		/// Using Stratis C# full node.
 		/// Should be updated to use official release once it is deployed.
@@ -1033,6 +1117,35 @@ namespace NBitcoin.Tests
 				},
 				SupportCookieFile = false,
 				AdditionalRegtestConfig = "defaultwalletname=default" + Environment.NewLine + "maxtipage=2147483647" + Environment.NewLine + "unlockdefaultwallet=1"
+			};
+		}
+		
+		public class DogeCashNodeDownloadData
+		{
+			public NodeDownloadData v5_1_1 = new NodeDownloadData()
+			{
+				Version = "5.1.1",
+				Windows = new NodeOSDownloadData()
+				{
+					DownloadLink = "https://github.com/dogecash/dogecash/releases/download/v5.0.1/DogeCash-5.0.1-win32.zip",
+					Archive = "DogeCash-5.0.1-win32.zip",
+					Executable = "dogecashd.exe",
+					Hash = "d78968049874617b9703323bf9ca03a8d140ebf605fff415437693abe3ccc5a0"
+				},
+				Linux = new NodeOSDownloadData()
+				{
+					DownloadLink = "https://github.com/dogecash/dogecash/releases/download/v5.0.1/DogeCash-5.0.1-x86_64-linux-gnu.tar.gz",
+					Archive = "DogeCash-5.0.1-x86_64-linux-gnu.tar.gz",
+					Executable = "dogecashd",
+					Hash = "D8738E8C3D97A3B776414278991EDCCD1E555756713911FDC21E77836D00A3F9"
+				},
+				Mac = new NodeOSDownloadData()
+				{
+					DownloadLink = "https://github.com/dogecash/dogecash/releases/download/v5.0.1/DogeCash-5.0.1-osx-unsigned.dmg",
+					Archive = "DogeCash-5.0.1-osx-unsigned.dmg",
+					Executable = "DogeCash-5.0.1-osx-unsigned.dmg",
+					Hash = "13B0DBF2480EB47D2B8A5B82145FE2FC87AEF22CB5CDF78E01C27A41C8CD41D1"
+				}
 			};
 		}
 
@@ -1159,6 +1272,16 @@ namespace NBitcoin.Tests
 		{
 			get; set;
 		} = new StratisNodeDownloadData();
+
+		public static ZCoinNodeDownloadData ZCoin
+		{
+			get; set;
+		} = new ZCoinNodeDownloadData();
+		
+		public static DogeCashNodeDownloadData DogeCash
+		{
+			get; set;
+		} = new DogeCashNodeDownloadData();
 
 		public bool UseSectionInConfigFile { get; private set; }
 		public string AdditionalRegtestConfig { get; private set; }
