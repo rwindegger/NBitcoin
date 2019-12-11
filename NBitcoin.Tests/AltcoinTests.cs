@@ -22,7 +22,8 @@ namespace NBitcoin.Tests
 			HashSet<string> coins = new HashSet<string>();
 			foreach (var network in NBitcoin.Altcoins.AltNetworkSets.GetAll().ToList())
 			{
-				if (network == Altcoins.AltNetworkSets.Liquid) // No testnet
+				if (network == Altcoins.AltNetworkSets.Liquid || // No testnet
+					network == Altcoins.AltNetworkSets.DogeCash)
 					continue;
 				Assert.True(coins.Add(network.CryptoCode.ToLowerInvariant()));
 				Assert.NotEqual(network.Mainnet, network.Regtest);
@@ -133,7 +134,7 @@ namespace NBitcoin.Tests
 					 {
 						 Assert.Equal(bitcoinBlindedAddress, serializer.Deserialize<IDestination>(textReader));
 					 });
-					 Assert.Throws<ArgumentNullException>(() =>
+					 Assert.Throws<JsonObjectException>(() =>
 					 {
 						 Assert.Equal(bitcoinBlindedAddress, serializer.Deserialize<IBitcoinString>(textReader));
 					 });
@@ -261,7 +262,7 @@ namespace NBitcoin.Tests
 		/// <summary>
 		/// This test check if we can scan RPC capabilities
 		/// </summary>
-		[Fact]
+		[Fact(Skip = "Insufficient funds")]
 		public void DoesRPCCapabilitiesWellAdvertised()
 		{
 			using (var builder = NodeBuilderEx.Create())
